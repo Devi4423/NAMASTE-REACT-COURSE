@@ -1,0 +1,29 @@
+{
+  "name": "namaste-react-course",
+  "version": "1.0.0",
+  "description": "\"Namaste React Course\"",
+  "keywords": [],
+  "homepage": "https://github.com/Devi4423/NAMASTE-REACT-COURSE#readme",
+  "bugs": {
+    "url": "https://github.com/Devi4423/NAMASTE-REACT-COURSE/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Devi4423/NAMASTE-REACT-COURSE.git"
+  },
+  "license": "ISC",
+  "author": "\"Gayathri Devi\"",
+  "type": "commonjs",
+    "scripts": {
+      "start":"parcel index.html",
+      "build":"parcel build index.html",
+      "test": "Jest"
+  },
+  "devDependencies": {
+    "parcel": "^2.16.4"
+  },
+  "dependencies": {
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4"
+  }
+}
