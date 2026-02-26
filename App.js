@@ -1,23 +1,37 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-// React Element => Object => render from ReactDOM => converted to HTML Element => Display in the browser
 
-const heading = React.createElement("h1",{id:"heading"},"Hello World!");
-
-console.log(heading)
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
+const HeadingComponent2 = () => {
+    return(
+        <h1>Hello from Heading Component 2</h1>
+    )
+}
 
-//JSX => HTML like syntax, XML like syntax
-//JSX is not valid Java Script
-//So Js engine does not understand the JSX syntax
-//JSX syntax is not understood by the browser, JSX is converted as Javascript code by Babel and then reached
-// the JS engine of the browser to understand the code and then display the browser
+const heading = <h1 className="heading">Hello from JSX!</h1>
 
-const jsxHeading = <h1 id="heading">Hello World from JSX!</h1>
-root.render(jsxHeading);
-console.log(jsxHeading)
+//function component = is normal javascript function have blocke of JSX code 
+const HeadingComponent = () =>{
+    const number = 10000
+    return(
+        <div>
+            <h1>Hello from Heading Component!</h1>
+
+            {/* Javascript Expression */}
+            {heading}
+            <h1>{number}</h1>
+            <h1>{100*76-number}</h1>
+            
+            {/* Component Composition */}
+            <HeadingComponent2 />
+        </div>
+    )
+}
+    
+root.render(<HeadingComponent />);
+
 
 
 
