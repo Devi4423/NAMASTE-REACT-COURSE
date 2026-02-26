@@ -4,33 +4,38 @@ import ReactDOM from "react-dom/client";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-const HeadingComponent2 = () => {
+
+// Using React.createElement
+// const nestedHeader = React.createElement("div",{className:"title"},[
+//     React.createElement("h1",{},"Heading 1"),
+//     React.createElement("h2",{},"Heading2"),
+//     React.createElement("h3",{},"Heading3")
+// ])
+
+// Using JSX
+// const nestedHeader = (
+//     <div className="title">
+//         <h1>Using JSX</h1>
+//         <h1>Heading 1</h1>
+//         <h2>Heading 2</h2>
+//         <h3>Heading 3</h3>
+//     </div>
+// )
+
+//Using Functional Component
+
+const NestedHeader = ()=> {
     return(
-        <h1>Hello from Heading Component 2</h1>
-    )
-}
-
-const heading = <h1 className="heading">Hello from JSX!</h1>
-
-//function component = is normal javascript function have blocke of JSX code 
-const HeadingComponent = () =>{
-    const number = 10000
-    return(
-        <div>
-            <h1>Hello from Heading Component!</h1>
-
-            {/* Javascript Expression */}
-            {heading}
-            <h1>{number}</h1>
-            <h1>{100*76-number}</h1>
-            
-            {/* Component Composition */}
-            <HeadingComponent2 />
+        <div className="title">
+            <h1>Using Functional Component</h1>
+            <h1>Heading 1</h1>
+            <h2>Heading 2</h2>
+            <h3>Heading 3</h3>
         </div>
     )
 }
     
-root.render(<HeadingComponent />);
+root.render(<NestedHeader />);
 
 
 
