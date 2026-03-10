@@ -32,11 +32,18 @@
 .header-section .logo-content ul{
     display: flex;
     list-style-type: none;
+    align-items: center;
 }
 
 .logo-content ul li{
     margin: 0px 20px;
     font-size: 20px;
+    cursor: pointer;
+}
+
+ul button{
+    padding: 5px 10px;
+    font-size: 16px;
     cursor: pointer;
 }
 
@@ -52,7 +59,7 @@
     margin: 20px 0px;
 }
 
-.restuarant-container{
+.restuarant-container,.shimmer-container{
     max-width: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -131,6 +138,38 @@
     margin: 30px 30px;
     padding: 5px 10px;
     font-size: 16px;
+}
+
+.shimmer-container .shimmer-cart{
+    width: 230px;
+    height: 400px;
+    background-color: #f0f0f0;
+    flex-basis: 19%;
+}
+
+.filter-box{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.filter-box input{
+    padding: 5px 10px;
+    font-size: 16px;
+    font-weight: bold;
+    outline: none;
+}
+
+.filter-box .search-btn{
+    padding: 5px 10px;
+    font-size: 16px;
+    background-color: rgb(163, 2, 2);
+    color: #fff;
+    border: 1px solid rgb(163, 2, 2);
+    cursor: pointer;
+    border-radius: 3px;
+    margin-left: 2px;
 }
 
 
