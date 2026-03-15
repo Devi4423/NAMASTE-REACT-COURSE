@@ -1,16 +1,17 @@
 import { RES_IMAGE } from "../utility/hard-code";
 
 const RestaurantCard = (props) => {
+
     const {resdata} = props;
-    const resimg = resdata.card.card.info.cloudinaryImageId
-    const resname = resdata.card.card.info.name;
-    const resprice = resdata.card.card.info.costForTwo;
-    const cuisines = resdata.card.card.info.cuisines.join(", ");
-    const locality = resdata.card.card.info.locality;
-    const area= resdata.card.card.info.areaName;
-    const avgRating = resdata.card.card.info.avgRating; 
+    const resimg = resdata.info.cloudinaryImageId
+    const resname = resdata.info.name;
+    const resprice = resdata.info.costForTwo;
+    const cuisines = resdata.info.cuisines.join(", ");
+    const locality = resdata.info.locality;
+    const area= resdata.info.areaName;
+    const avgRating = resdata.info.avgRating;
     
-    // const {resimg,resname,resprice,cuisines,locality,area,avgRating} = resdata?.card?.card?.info; 
+    // const {resimg,resname,resprice,cuisines,locality,area,avgRating} = resdata.info; 
     return (
         <div className="resturant-card">
             <div className="res-img">

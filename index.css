@@ -41,6 +41,11 @@
     cursor: pointer;
 }
 
+ul li a{
+    text-decoration: none;
+    color: #000;
+}
+
 ul button{
     padding: 5px 10px;
     font-size: 16px;
@@ -85,7 +90,7 @@ ul button{
 
 .resturant-card .res-img{
     width: 100%;
-    height: 175px;
+    height: 190px;
     margin-bottom: 10px;
 }
 
@@ -99,6 +104,11 @@ ul button{
     height: 100%;
     object-fit: cover;
     object-position: center;
+}
+
+.restuarant-container a{
+    text-decoration: none;
+    color: #000;
 }
 
 .resturant-card .res-content h4{
@@ -171,6 +181,44 @@ ul button{
     border-radius: 3px;
     margin-left: 2px;
 }
+
+.res-info-container{
+    max-width: 100%;
+}
+
+.res-info-container .res-info-card{
+    max-width: 100%;
+    box-shadow: 0px 0px 7px rgba(0,0,0,0.1);
+    padding: 20px;
+}
+
+.res-info-card h1{
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.res-info-card h4{
+    margin-bottom: 10px;
+}
+
+.res-info-card .cuisines{
+    display: flex;
+    gap: 20px;
+}
+
+.res-info-card .res-description{
+    display: flex;
+    gap: 10px;
+}
+
+.res-description p{
+    color: #333;
+    text-align: center;
+    padding:5px;
+    border: 1px solid #000;
+}
+
+
 
 
 /* Mobile Device */

@@ -1,6 +1,7 @@
 import RestaurantCard  from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const Body = ()=> {
 
@@ -12,45 +13,65 @@ const Body = ()=> {
         fetchData()
     },[])
 
-    const  fetchData = async() => {
-        const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=9.3590199&lng=78.8370316&collection=83633&tags=layout_CCS_NorthIndian&sortBy=&filters=&type=rcv2&offset=0&carousel=true&third_party_vendor=1")
-        const resjson = await data.json()
+    const fetchData = async () => {
+        const response = await fetch("https://www.swiggy.com/mapi/restaurants/list/v5?offset=0&is-seo-homepage-enabled=true&lat=9.3590199&lng=78.8370316&carousel=true&third_party_vendor=1",
+            {
+                headers: {
+                    "User-Agent":"Mozilla/5.0",
+                    "Accept":"application/json"
+                }
+            }
+        );
+       const json = await response.json()
+       console.log(json)
 
-        //Optional Chaining
-        console.log(resjson?.data?.cards?.slice(3))
-        setRestuarantList(resjson?.data?.cards?.slice(3))
-        setFilteredResturant(resjson?.data?.cards?.slice(3))
-    } 
+       const restaurants = json?.data?.cards?.find((card)=>card?.card?.card?.gridElements?.infoWithStyle?.restaurants)?.card?.card?.gridElements?.infoWithStyle?.restaurants
+
+       console.log(restaurants)
+       setRestuarantList(restaurants);
+       setFilteredResturant(restaurants)
+        
+        // const text = await response.text();
+        // console.log(text)
+        // const json = JSON.parse(text)
+        // console.log(json)
+        
+        // const json = await response.json();
+        // console.log(json);
+
+        
+    };
 
     function topRatedRestuarants () {
         const topRated = restuarantList.filter(
             (res)=>{
-                return(res.card.card.info.avgRating>4)
+                return(res.info.avgRating >= 4.0)
             }
         );
-        setRestuarantList(topRated);
+        setFilteredResturant(topRated);
     } 
 
     const searchResturant = () => {
-        const filter = restuarantList.filter(res=>res.card.card.info.name.toLowerCase().includes(searchres.toLowerCase()))
-        const cuisineFilter = restuarantList.filter(res=>res.card.card.info.cuisines.join(", ").toLowerCase().includes(searchres.toLowerCase()))
+        const filter = restuarantList.filter(res=>res.info.name.toLowerCase().includes(searchres.toLowerCase()))
+        console.log(filter)
+        const cuisineFilter = restuarantList.filter(res=>res.info.cuisines.join(", ").toLowerCase().includes(searchres.toLowerCase()))
 
         if(filter.length!==0){
             setFilteredResturant(filter)
         }
-        else if(cuisineFilter!==0){
+        else if(cuisineFilter.length!==0){
             setFilteredResturant(cuisineFilter)
         }
         else{
-            setFilteredResturant("Resturant not Found")
+            setFilteredResturant([])
         }
     }
     
+    if (filteredResturant.length === 0){
+        return<Shimmer />
+    }
 
-    return restuarantList.length === 0 ?(
-        <Shimmer/>
-    ):
-    (
+    return (
         <section className="body-section">
             <h1>Welcome to Foody</h1>
             <div className="filter-box">
@@ -61,7 +82,7 @@ const Body = ()=> {
             
             <div className="restuarant-container">
                {filteredResturant.map((resturant)=>(
-                <RestaurantCard key={resturant.card.card.info.id} resdata={resturant}/>
+                <Link to={"/restaurant/"+resturant.info.id} key={resturant.info.id}><RestaurantCard  resdata={resturant} /></Link>
                ))}
             </div>
         </section>

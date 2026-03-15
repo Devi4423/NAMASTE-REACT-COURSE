@@ -9,7 +9,6 @@ const Shimmer = () => {
             <div className="shimmer-cart"></div>
             <div className="shimmer-cart"></div>
             <div className="shimmer-cart"></div>
-            <div className="shimmer-cart"></div>
         </div>
     )
 }
