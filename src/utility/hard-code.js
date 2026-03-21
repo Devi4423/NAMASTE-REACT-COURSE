@@ -2,4 +2,6 @@ export const LOGO_URL = "https://images-platform.99static.com/O3ZHfJeHB741xpyYH9
 
 export const RES_IMAGE = `https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_400/`;
 
+export const LISTOFRESTAURANTS = "https://www.swiggy.com/mapi/restaurants/list/v5?offset=0&is-seo-homepage-enabled=true&lat=9.3590199&lng=78.8370316&carousel=true&third_party_vendor=1"
+
 export const MENU_URL = "https://www.swiggy.com/mapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=9.3590199&lng=78.8370316&restaurantId="

@@ -1,7 +1,9 @@
+import useOnlineStatus from "../utility/useOnlineStatus";
 import RestaurantCard  from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { LISTOFRESTAURANTS } from "../utility/hard-code";
 
 const Body = ()=> {
 
@@ -9,12 +11,14 @@ const Body = ()=> {
     const [filteredResturant,setFilteredResturant] = useState([]);
     const [searchres,setSearchRes] = useState("");
 
+    const onlineStatus = useOnlineStatus();
+
     useEffect(()=>{
         fetchData()
     },[])
 
     const fetchData = async () => {
-        const response = await fetch("https://www.swiggy.com/mapi/restaurants/list/v5?offset=0&is-seo-homepage-enabled=true&lat=9.3590199&lng=78.8370316&carousel=true&third_party_vendor=1",
+        const response = await fetch(LISTOFRESTAURANTS,
             {
                 headers: {
                     "User-Agent":"Mozilla/5.0",
@@ -37,9 +41,7 @@ const Body = ()=> {
         // console.log(json)
         
         // const json = await response.json();
-        // console.log(json);
-
-        
+        // console.log(json); 
     };
 
     function topRatedRestuarants () {
@@ -66,12 +68,18 @@ const Body = ()=> {
             setFilteredResturant([])
         }
     }
-    
-    if (filteredResturant.length === 0){
-        return<Shimmer />
+
+
+    if(onlineStatus === false){
+        return <h1>You are offline. Please make your internet connection!!!</h1>
     }
 
-    return (
+    // if (filteredResturant.length === 0){
+    //     return<Shimmer />
+    // }
+
+    return filteredResturant.length === 0 ? <Shimmer/>
+    :(
         <section className="body-section">
             <h1>Welcome to Foody</h1>
             <div className="filter-box">

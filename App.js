@@ -9,11 +9,14 @@ import {
   RouterProvider,
   Routes,
 } from "react-router-dom";
-import About from "./src/components/About";
+// import About from "./src/components/About";
 import Contact from "./src/components/Contact";
 import ErrorPage from "./src/components/ErrorPage";
 import Cart from "./src/components/Cart";
 import RestaurantMenu from "./src/components/RestaurantMenu";
+import { lazy } from "react";
+
+const About = lazy(()=>import("./src/components/About"))
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
