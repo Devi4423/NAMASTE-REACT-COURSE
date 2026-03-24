@@ -9,14 +9,14 @@ import {
   RouterProvider,
   Routes,
 } from "react-router-dom";
-// import About from "./src/components/About";
+import About from "./src/components/About";
 import Contact from "./src/components/Contact";
 import ErrorPage from "./src/components/ErrorPage";
 import Cart from "./src/components/Cart";
 import RestaurantMenu from "./src/components/RestaurantMenu";
-import { lazy } from "react";
+import { lazy, Suspense } from "react";
 
-const About = lazy(()=>import("./src/components/About"))
+const Grocery = lazy(()=>import("./src/components/Grocery"))
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -58,6 +58,13 @@ const appRouter = createBrowserRouter(
           element: <Contact />,
         },
         {
+          path: "/grocery",
+          element: 
+            <Suspense fallback={<h1>Loading...</h1>}>
+              <Grocery/>
+            </Suspense>
+        },
+        {
           path: "/cart",
           element: <Cart />,
         },
@@ -67,8 +74,7 @@ const appRouter = createBrowserRouter(
         },
       ],
     },
-  ],
-  { future: { v7_startTransition: true } },
+  ]
 );
 
 root.render(<RouterProvider router={appRouter} />);

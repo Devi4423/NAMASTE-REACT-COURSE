@@ -80,15 +80,19 @@ const Body = ()=> {
 
     return filteredResturant.length === 0 ? <Shimmer/>
     :(
-        <section className="body-section">
-            <h1>Welcome to Foody</h1>
-            <div className="filter-box">
-                <input placeholder="search resturant" type="text" onChange={(e)=>setSearchRes(e.target.value)} value={searchres}/>
-                <button className="search-btn" onClick={searchResturant}>Search</button>
-                <button onClick={topRatedRestuarants} className="filter-btn">Top Rated Restuarant</button>
+        <section className="p-3 sm:p-5 md:p-8">
+            <h1 className="font-bold text-4xl text-center mt-2.5">Welcome to Foody</h1>
+            <div className="flex my-8 gap-5 justify-center" >
+                <div className="flex gap-1.5">
+                    <input className="border border-gray-400 h-fit px-4 py-2 text-base rounded-md focus:outline-0" placeholder="search resturant" type="text" onChange={(e)=>setSearchRes(e.target.value)} value={searchres}/>
+                    <button className="bg-orange-800 px-4 py-2 text-white rounded-lg" onClick={searchResturant}>Search</button>
+                </div>
+                <div>
+                    <button onClick={topRatedRestuarants} className="bg-gray-400 py-2 px-4">Top Rated Restuarant</button>
+                </div>
             </div>  
             
-            <div className="restuarant-container">
+            <div className="w-full lg:max-w-[900px] xl:max-w-[1200px] grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mx-auto gap-5 lg:p-7">
                {filteredResturant.map((resturant)=>(
                 <Link to={"/restaurant/"+resturant.info.id} key={resturant.info.id}><RestaurantCard  resdata={resturant} /></Link>
                ))}

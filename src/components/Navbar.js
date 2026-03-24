@@ -6,26 +6,29 @@ const Navbar = () => {
     const [btnName,setBtnName] = useState("Login")
     // let btnName= "Login"
     return(
-        <header className="header-section">
-            <div className="logo-img">
-                <img alt="logo" src={LOGO_URL}/>
+        <header className="flex justify-between items-center py-4 px-8 bg-brown shadow-xl">
+            <div>
+                <img alt="logo" src={LOGO_URL} className="w-14"/>
             </div>
             <div className="logo-content">
-                <ul>
-                    <li>
-                        <Link to="/">Home</Link>
+                <ul className="flex">
+                    <li className="mx-5 ">
+                        <Link to="/" className="text-xl hover:bg-orange-800 hover:text-white px-2.5 py-1 rounded-sm">Home</Link>
                     </li>
-                    <li>
-                        <Link to="/about">About Us</Link>
+                    <li className="mx-5">
+                        <Link to="/about" className="text-xl hover:bg-orange-800 hover:text-white px-2.5 py-1 rounded-sm">About Us</Link>
                     </li>
-                    <li>
-                        <Link to="/contact">Contact Us</Link>
+                    <li className="mx-5">
+                        <Link to="/contact" className="text-xl hover:bg-orange-800 hover:text-white px-2.5 py-1 rounded-sm">Contact Us</Link>
                     </li>
-                    <li>
-                        <Link to="/cart">Cart</Link>
+                    <li className="mx-5">
+                        <Link to="/grocery" className="text-xl hover:bg-orange-800 hover:text-white px-2.5 py-1 rounded-sm">Grocery</Link>
                     </li>
-                    <li>
-                        <button className="login-btn" 
+                    <li className="mx-5">
+                        <Link to="/cart" className="text-xl hover:bg-orange-800 hover:text-white px-2.5 py-1 rounded-sm">Cart</Link>
+                    </li>
+                    <li className="mx-5">
+                        <button className="text-xl bg-gray-400 text-white px-2 py-1 hover:bg-gray-600 hover:text-white rounded-sm" 
                         onClick={()=>{
 
                             //conditional Rendering

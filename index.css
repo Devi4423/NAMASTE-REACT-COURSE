@@ -7,7 +7,7 @@
 }
 
 /* Navbar Section */
-.header-section{
+/* .header-section{
     background-color: #fff;
     max-width: 100%;
     display: flex;
@@ -54,7 +54,7 @@ ul button{
 
 /* Resturant Section */
 
-.body-section{
+/* .body-section{
     max-width: 100%;
 }
 
@@ -222,25 +222,25 @@ ul button{
     border: 1px solid #000;
     padding: 20px;
     
-}
+} */ 
 
 
 
 
 /* Mobile Device */
-@media screen and (max-width:500px) {
+/* @media screen and (max-width:500px) {
     .restuarant-container{
         display: grid;
         grid-template-columns: 200px 200px;
-    }
+    } */
 
     /* .resturant-card{
         justify-self: center;
     } */
-}
+/* } */
 
-@media screen and (max-width:470px) and (min-width: 310px) {
+/* @media screen and (max-width:470px) and (min-width: 310px) {
     .restuarant-container{
         grid-template-columns: 250px;
     }
-}
+} */

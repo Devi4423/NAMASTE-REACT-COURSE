@@ -13,16 +13,16 @@ const RestaurantCard = (props) => {
     
     // const {resimg,resname,resprice,cuisines,locality,area,avgRating} = resdata.info; 
     return (
-        <div className="resturant-card">
-            <div className="res-img">
-                <img src={RES_IMAGE+resimg} alt="res-img"/>
+        <div className="min-w-50">
+            <div className="w-full h-40">
+                <img src={RES_IMAGE+resimg} alt="res-img" className="w-full h-full object-cover rounded-md"/>
             </div>
             <div className="res-content">
-                <h4>{resname}</h4>
-                <h6>{resprice}</h6>
-                <p className="cuisine">{cuisines}</p>
-                <p className="rating"> <span>Rating:</span> {avgRating} stars</p >               
-                <p className="location"> <span>Location: </span> 
+                <h4 className="font-bold text-lg mt-1.5">{resname}</h4>
+                <h6 className="text-sm mt-1.5 font-bold">{resprice}</h6>
+                <p className="font-bold text-sm mt-1.5"> <span className="bg-green-700 text-white px-2 py-1">Rating:</span> {avgRating} stars</p >
+                <p className="text-sm text-gray-500 mt-1.5">{cuisines}</p>               
+                <p className="text-sm mt-1 text-gray-500 "> 
                  {locality==area ? locality : locality+", "+area}
                 </p>                
             </div>
