@@ -1,10 +1,14 @@
 import { LOGO_URL } from "../utility/hard-code";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import UserContext from "../utility/UserContext";
 
 const Navbar = () => {
     const [btnName,setBtnName] = useState("Login")
     // let btnName= "Login"
+
+    const {loggedInUser} = useContext(UserContext);
+
     return(
         <header className="flex justify-between items-center py-4 px-8 bg-brown shadow-xl">
             <div>
@@ -35,6 +39,11 @@ const Navbar = () => {
                             setBtnName(btnName == "Login" ? "Logout" : "Login")
                         }
                         }>{btnName}</button>
+                    </li>
+                    <li className="mx-5">
+                        <Link to="/cart" className="text-xl hover:bg-orange-800 hover:text-white px-2.5 py-1 rounded-sm font-bold">
+                            {loggedInUser}
+                        </Link>
                     </li>
                 </ul>
             </div>

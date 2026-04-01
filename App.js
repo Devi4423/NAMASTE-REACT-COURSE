@@ -14,13 +14,26 @@ import Contact from "./src/components/Contact";
 import ErrorPage from "./src/components/ErrorPage";
 import Cart from "./src/components/Cart";
 import RestaurantMenu from "./src/components/RestaurantMenu";
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
+import UserContext from "./src/utility/UserContext";
 
 const Grocery = lazy(()=>import("./src/components/Grocery"))
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 const App = () => {
+
+  const [userName,setUsername] = useState();
+
+  //update the user context od UserContext 
+
+  useEffect(()=>{
+    const userData = {
+      name:"Gayathri Devi"
+    }
+    setUsername(userData.name)
+  },[])
+
   return (
     //    <BrowserRouter>
     //         <Navbar/>
@@ -30,11 +43,11 @@ const App = () => {
     //             <Route path="/contact" element={<Contact/>}/>
     //         </Routes>
     //    </BrowserRouter>
-
-    <>
+    
+    <UserContext.Provider value={{loggedInUser:userName, setUsername }}>
       <Navbar />
       <Outlet />
-    </>
+    </UserContext.Provider>
   );
 };
 

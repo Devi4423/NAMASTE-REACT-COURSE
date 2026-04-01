@@ -1,29 +1,37 @@
 import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom";
 import useRestaurantMenu from "../utility/useRestaurantMenu";
+import ResCategory from "./ResCategory"
+import { useState } from "react";
 
 
 const RestaurantMenu = () => {
 
+    const [showItems] = useState()
+    const [showIndex, setShowIndex] = useState(0);
+
     const  {id} = useParams();
-    console.log(id)
+    // console.log(id)
     
     const resInfo = useRestaurantMenu(id);
-    console.log("restuarantMenu",resInfo);
+    // console.log("restuarantMenu",resInfo);
 
      if(resInfo === null){
         return <Shimmer/>
     }
 
     const infoRestaurant = resInfo?.data?.cards.find((card)=>card?.card?.card?.info)?.card?.card?.info
-    console.log("infores",infoRestaurant) 
+    // console.log("infores",infoRestaurant) 
+
+    const categories = resInfo?.data?.cards[5].groupedCard.cardGroupMap.REGULAR.cards.filter((card)=>card.card.card["@type"] === "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory")
+    // console.log("categories", categories)
 
     const {name,costForTwoMessage,city,areaName,cuisines,locality,avgRatingString} = infoRestaurant;
     const {minDeliveryTime,maxDeliveryTime} = infoRestaurant.sla;
 
     return(
-        <div className="lg:w-3xl mx-auto xl:w-6xl">
-           <div className="shadow-2xs py-2.5 px-5">
+        <div className="lg:w-[800px] mx-auto xl:max-w-[1200px] md:max-w-lg">
+           <div className=" py-2.5 px-5">
                 <h1 className="text-2xl font-bold mt-10">{name}</h1>
                 <div className="border border-gray-200 mt-8 p-6 rounded-xl shadow-2xl">
                     <div>
@@ -36,6 +44,17 @@ const RestaurantMenu = () => {
            </div>
 
            {/* Category Restaurant */}
+
+           <div>
+                {categories.map((category,index)=>(
+                    <ResCategory 
+                        category= {category} 
+                        key={category.card.card.categoryId} 
+                        showItems = {showIndex === index ? true : false}
+                        setshowIndex={()=>setShowIndex(index)}
+                    />
+                ))}
+           </div>
 
         </div>
     )

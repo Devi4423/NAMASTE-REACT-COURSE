@@ -1,4 +1,6 @@
+import { useContext } from "react";
 import { RES_IMAGE } from "../utility/hard-code";
+import UserContext from "../utility/UserContext";
 
 const RestaurantCard = (props) => {
 
@@ -10,7 +12,8 @@ const RestaurantCard = (props) => {
     const locality = resdata.info.locality;
     const area= resdata.info.areaName;
     const avgRating = resdata.info.avgRating;
-    
+
+    const {loggedInUser} = useContext(UserContext);
     // const {resimg,resname,resprice,cuisines,locality,area,avgRating} = resdata.info; 
     return (
         <div className="min-w-50">
@@ -24,7 +27,8 @@ const RestaurantCard = (props) => {
                 <p className="text-sm text-gray-500 mt-1.5">{cuisines}</p>               
                 <p className="text-sm mt-1 text-gray-500 "> 
                  {locality==area ? locality : locality+", "+area}
-                </p>                
+                </p>  
+                <p className="text-sm mt-1 text-black font-semibold">{loggedInUser}</p>               
             </div>
         </div>
     )
