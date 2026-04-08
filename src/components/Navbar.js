@@ -2,12 +2,16 @@ import { LOGO_URL } from "../utility/hard-code";
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import UserContext from "../utility/UserContext";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
     const [btnName,setBtnName] = useState("Login")
     // let btnName= "Login"
 
     const {loggedInUser} = useContext(UserContext);
+
+    const cartItems = useSelector((store)=>store.cart.items)
+    console.log(cartItems)
 
     return(
         <header className="flex justify-between items-center py-4 px-8 bg-brown shadow-xl">
@@ -29,7 +33,7 @@ const Navbar = () => {
                         <Link to="/grocery" className="text-xl hover:bg-orange-800 hover:text-white px-2.5 py-1 rounded-sm">Grocery</Link>
                     </li>
                     <li className="mx-5">
-                        <Link to="/cart" className="text-xl hover:bg-orange-800 hover:text-white px-2.5 py-1 rounded-sm">Cart</Link>
+                        <Link to="/cart" className="text-xl hover:bg-orange-800 hover:text-white px-2.5 py-1 rounded-sm">Cart <span className="font-bold">({cartItems.length})</span></Link>
                     </li>
                     <li className="mx-5">
                         <button className="text-xl bg-gray-400 text-white px-2 py-1 hover:bg-gray-600 hover:text-white rounded-sm" 

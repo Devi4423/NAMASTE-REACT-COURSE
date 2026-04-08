@@ -1,9 +1,18 @@
+import { useDispatch } from "react-redux";
 import { RES_IMAGE } from "../utility/hard-code";
+import { addItems } from "../redux/cartSlice";
 
 const ItemCards = ({item}) => {
+
     const {name,imageId,finalPrice,price,description} = item.card.info
     const{rating,ratingCountV2} = item?.card?.info?.ratings?.aggregatedRating
     console.log(item)
+
+    const dispatch = useDispatch();
+
+    const handleAddItem = (item) => {
+        dispatch(addItems(item))
+    }
 
     return(
         <div className="flex justify-between items-center mt-4 pb-4 border-b-2 border-gray-200">
@@ -15,11 +24,11 @@ const ItemCards = ({item}) => {
             </div>
             {imageId ?
             <div className="relative w-[150px] h-[150px] shrink-0 ml-2.5">
-                <button className="absolute text-green-600 font-bold text-lg border border-gray-500 left-1/2 -translate-x-1/2 shadow-xl rounded-2xl bg-white px-5 py-2.5 cursor-pointer hover:bg-gray-400">Add</button>
+                <button className="absolute text-green-600 font-bold text-lg border border-gray-500 left-1/2 -translate-x-1/2 shadow-xl rounded-2xl bg-white px-5 py-2.5 cursor-pointer hover:bg-gray-400" onClick={()=>handleAddItem(item)}>Add</button>
                 {imageId && <img src={RES_IMAGE+imageId} className="w-full h-full object-cover rounded-2xl"/>}
             </div>:
             <div className="w-[150px] flex justify-center">
-                <button className="text-center text-green-600 font-bold text-lg border border-gray-500 shadow-xl rounded-2xl bg-white px-5 py-2.5 cursor-pointer hover:bg-gray-400">Add</button>
+                <button className="text-center text-green-600 font-bold text-lg border border-gray-500 shadow-xl rounded-2xl bg-white px-5 py-2.5 cursor-pointer hover:bg-gray-400" onClick={()=>handleAddItem(item)}>Add</button>
             </div>
             }
         </div>

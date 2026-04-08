@@ -16,7 +16,7 @@ const RestaurantCard = (props) => {
     const {loggedInUser} = useContext(UserContext);
     // const {resimg,resname,resprice,cuisines,locality,area,avgRating} = resdata.info; 
     return (
-        <div className="min-w-50">
+        <div className="min-w-[200px]">
             <div className="w-full h-40">
                 <img src={RES_IMAGE+resimg} alt="res-img" className="w-full h-full object-cover rounded-md"/>
             </div>

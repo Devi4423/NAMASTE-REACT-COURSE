@@ -20,4 +20,14 @@ Different dev and Production bundles
 
 
 
+#Redux Toolkit
+   -Install @redux.js/toolkit and react-redux packages
+   -Build Redux Store 
+   -Connect redux to our app using Provider from React-redux package
+   -create a slice (cart)
+   -dipatch the action when the click the add button on menus
+   -calling an reducer function 
+   -subscribing the store or read the cartItems using Selector
+
+
 

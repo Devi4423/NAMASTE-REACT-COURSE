@@ -16,6 +16,8 @@ import Cart from "./src/components/Cart";
 import RestaurantMenu from "./src/components/RestaurantMenu";
 import { lazy, Suspense, useEffect, useState } from "react";
 import UserContext from "./src/utility/UserContext";
+import { Provider } from "react-redux";
+import appStore from "./src/redux/appStore";
 
 const Grocery = lazy(()=>import("./src/components/Grocery"))
 
@@ -43,11 +45,12 @@ const App = () => {
     //             <Route path="/contact" element={<Contact/>}/>
     //         </Routes>
     //    </BrowserRouter>
-    
+    <Provider store={appStore}>
     <UserContext.Provider value={{loggedInUser:userName, setUsername }}>
       <Navbar />
       <Outlet />
     </UserContext.Provider>
+    </Provider>
   );
 };
 
