@@ -5,6 +5,8 @@ import UserContext from "../utility/UserContext";
 const RestaurantCard = (props) => {
 
     const {resdata} = props;
+    // console.log(resdata);
+    
     const resimg = resdata.info.cloudinaryImageId
     const resname = resdata.info.name;
     const resprice = resdata.info.costForTwo;
@@ -16,7 +18,7 @@ const RestaurantCard = (props) => {
     const {loggedInUser} = useContext(UserContext);
     // const {resimg,resname,resprice,cuisines,locality,area,avgRating} = resdata.info; 
     return (
-        <div className="min-w-[200px]">
+        <div className="min-w-[200px]" data-testid="res-card">
             <div className="w-full h-40">
                 <img src={RES_IMAGE+resimg} alt="res-img" className="w-full h-full object-cover rounded-md"/>
             </div>

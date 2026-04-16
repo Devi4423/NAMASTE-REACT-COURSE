@@ -6,12 +6,12 @@ const ResCategory = ({category,showItems,setshowIndex}) => {
     // const [showItems,setShowItems] = useState(true)
 
     const itemcards = category.card.card.itemCards
-    console.log("cardItems", itemcards)
+    // console.log("cardItems", itemcards)
 
     const ItemCardsBestSeller = WithBestSellerItems(ItemCards)
 
     return(
-        <div className=" border-b-[20px] border-gray-100 py-5 px-5 mt-5">
+        <div className=" border-b-[20px] border-gray-100 py-5 px-5 mt-5" data-testid="res-category">
             {/* Cordion Header */}
             <div className="flex justify-between items-center cursor-pointer" onClick={()=>setshowIndex()}>
                 <h4 className="font-bold text-xl">{category.card.card.title} ({itemcards.length})</h4>

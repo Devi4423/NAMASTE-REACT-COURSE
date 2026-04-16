@@ -6,7 +6,7 @@ const Cards = ({cart, quantity, setQuantity, handleIncrement}) => {
 
     // const [quantity,setQuantity] = useState(1);
 
-    console.log(cart);
+    // console.log(cart);
 
     const {name,imageId,price,defaultPrice,id}= cart.card.info;
 
@@ -28,7 +28,7 @@ const Cards = ({cart, quantity, setQuantity, handleIncrement}) => {
     const quantityAmount = (price ? price/100 : defaultPrice/100) * quantity;
 
     return(
-        <div className="flex gap-4 items-center mb-2 border-b-2 pb-2">
+        <div className="flex gap-4 items-center mb-2 border-b-2 pb-2" data-testid="cart-item">
            {imageId &&  
             <div className="w-[100px] h-[100px]">
                 <img src={RES_IMAGE +imageId} alt={name} className="w-full h-full object-cover"/>

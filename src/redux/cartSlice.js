@@ -18,7 +18,7 @@ const cartSlice = createSlice({
     }
 })
 
-console.log("cartslice",cartSlice)
+// console.log("cartslice",cartSlice)
 
 export const {addItems,removeItems,clearCart} = cartSlice.actions;
 

@@ -48,7 +48,7 @@ const Body = ()=> {
     function topRatedRestuarants () {
         const topRated = restuarantList.filter(
             (res)=>{
-                return(res.info.avgRating >= 4.0)
+                return(res.info.avgRating >= 4.4)
             }
         );
         setFilteredResturant(topRated);
@@ -83,11 +83,11 @@ const Body = ()=> {
             <h1 className="font-bold text-3xl text-center mt-2.5 md:text-4xl">Welcome to Foody</h1>
             <div className="my-8 flex flex-col items-center lg:flex-row gap-5 justify-center" >
                 <div className="flex gap-1.5">
-                    <input className="border border-gray-400 h-fit px-4 py-2 text-base rounded-md focus:outline-0" placeholder="search resturant" type="text" onChange={(e)=>setSearchRes(e.target.value)} value={searchres}/>
+                    <input data-testid="searchRestaurant" className="border border-gray-400 h-fit px-4 py-2 text-base rounded-md focus:outline-0" placeholder="search resturant" type="text" onChange={(e)=>setSearchRes(e.target.value)} value={searchres}/>
                     <button className="bg-orange-800 px-4 py-2 text-white rounded-lg" onClick={searchResturant}>Search</button>
                 </div>
                 <div>
-                    <button onClick={topRatedRestuarants} className="bg-gray-400 py-2 px-4 ">Top Rated Restuarant</button>
+                    <button onClick={topRatedRestuarants} className="bg-gray-400 py-2 px-4 ">Top Rated Restaurant</button>
                 </div>
                 <div>
                     <input className="border border-black px-4 py-2" placeholder="User Name" onChange={(e)=>setUsername(e.target.value)} value={loggedInUser} />

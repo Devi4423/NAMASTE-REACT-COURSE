@@ -6,7 +6,7 @@ const ItemCards = ({item}) => {
 
     const {name,imageId,finalPrice,price,description} = item.card.info
     const{rating,ratingCountV2} = item?.card?.info?.ratings?.aggregatedRating
-    console.log(item)
+    // console.log(item)
 
     const dispatch = useDispatch();
 
@@ -15,7 +15,7 @@ const ItemCards = ({item}) => {
     }
 
     return(
-        <div className="flex justify-between items-center mt-4 pb-4 border-b-2 border-gray-200">
+        <div data-testid="item-card" className="flex justify-between items-center mt-4 pb-4 border-b-2 border-gray-200">
             <div>
                 <h6 className="font-bold text-lg mb-2">{name}</h6>
                 {price && <p className="mb-2"> <span className="text-sm font-bold">₹</span><span className="text-sm font-bold">{price/100}</span> </p>}
